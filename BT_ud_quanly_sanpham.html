@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #add {
+            width: 35px;
+            ;
+            height: 23px;
+            background-color: #4CAF50;
+            color: white;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+
+        .Input {
+            width: 35px;
+            ;
+            height: 23px;
+            background-color: #4CAF50;
+            color: white;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Add New Product</h3>
+    <input type="text" id="nProduct" placeholder="New product">
+    <input type="submit" value="Add" id='add' onclick="addpProduct()">
+    <h3>Display All Product</h3>
+    <h5>Product Name</h5>
+    <table id='main'></table>
+
+
+    <script>
+        let product = ['Đấu phá thương khung', 'Đấu la đại lục', 'Yêu thần ký', 'One Piece', 'Onepunch Man'];
+
+        function showProduct() {
+            let mainBody = ' ';
+            for (let i = 0; i < product.length; i++) {
+                mainBody += '<tr> <td>' + product[i] + '</td> <td id ="input1">'
+                    + '<input type = "button" class = "Input" value="Edit" onclick="editProduct(' + i + ')" id =' + '"edit' + i + '";></td>'
+                    + '<td><input type="button"  class = "Input" onclick = "dellProduct(' + i + ')" value = "Dell" id = "dell' + i + '";' + '></button> </td>'
+                    + '</tr>'
+            }
+            document.getElementById('main').innerHTML = mainBody
+        }
+        showProduct();
+
+        function addpProduct() {
+            let newProduct = document.getElementById('nProduct').value;
+            product.push(newProduct);
+            showProduct();
+
+        }
+        function editProduct(i) {
+            let text = prompt('input edit :');
+            if (text !== '')
+            product[i] = text;
+            showProduct();
+        }
+        function dellProduct(i) {
+            product.splice(i,i);
+            showProduct();
+        }
+
+    </script>
+</body>
+
+</html>
